@@ -2,7 +2,6 @@
 
 Span::Span(unsigned int n)
 {
-    std::cout << "Construtor called" << std::endl;
     _n = n;
     _v.reserve(n);
 }
@@ -27,10 +26,7 @@ Span &Span::operator=(const Span & copy)
 void Span::addNumber(int n)
 {
     if (_v.size() < _n)
-    {
         _v.push_back(n);
-        std::cout <<"added " << n << " to the vector" << std::endl;
-    }
     else
         throw std::exception();
 }
@@ -42,10 +38,10 @@ int Span::shortestSpan()
     std::vector<int> v =_v;
     std::sort(v.begin(), v.end());
     int min = v[1] - v[0];
-    for (unsigned int i = 1; i < v.size(); i++)
+    for (unsigned int i = 1; i < v.size() -1; i++)
     {
         if(v[i + 1] - v[i] < min)
-            min = v[i -1] - v[i];
+            min = v[i + 1] - v[i];
     }
     return (min);
 }
